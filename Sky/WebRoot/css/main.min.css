@@ -1,0 +1,557 @@
+.main-top {
+	width: 100%;
+	height: 100px;
+	position: relative;
+	overflow: hidden
+}
+
+.main-top .logo-img {
+	width: 30%;
+	height: 100%;
+	margin-left: 2%;
+	display: inline-block;
+	background-image: url(../images/sky.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	position: absolute;
+	left: 0
+}
+
+.main-top .welcome {
+	display: inline-block;
+	width: 67%;
+	height: 100%;
+	position: absolute;
+	right: 0
+}
+
+.main-top .welcome .photo {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto auto auto 30px
+}
+
+.main-top .welcome .photo img {
+	width: 100%;
+	height: 100%
+}
+
+.main-top .welcome .detail {
+	display: inline-block;
+	height: 100%;
+	position: absolute;
+	left: 70px;
+	padding-left: 20px;
+	font-size: 16px
+}
+
+.main-top .welcome .detail .realname {
+	height: 30px;
+	line-height: 30px;
+	margin-top: 25px
+}
+
+.main-top .welcome .detail .realname span {
+	font-size: 15px;
+	color: #555;
+	margin-left: 5px
+}
+
+.main-top .welcome .detail .wel-info {
+	height: 25px;
+	line-height: 25px
+}
+
+.main-content {
+	/*height: 500px;*/
+	border-top: 2px solid #abd5fe;
+	position: relative;
+	overflow-x: hidden
+}
+
+.main-content .menu-left {
+	display: inline-block;
+	width: 170px;
+	height: 100%;
+	color: #777;
+	font-size: 16px;
+	border-right: 1px solid #abd5fe;
+	overflow: hidden;
+	position: absolute;
+	left: 0
+}
+
+.menu-left-page .title {
+	width: 100%;
+	height: 10px;
+	background-color: #ceffce
+}
+
+.menu-left-page .item {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 15px;
+	border-bottom: 1px solid #e6e6e6;
+	background-image: url(../images/arrow_right.png);
+	background-repeat: no-repeat;
+	background-position-x: 95%;
+	background-position-y: 50%;
+	background-size: 8px
+}
+
+.menu-left-page .selected {
+	background-color: #60BBFF;
+	color: #fff;
+	font-size: 17px
+}
+
+.main-content .context {
+	display: inline-block;
+	height: 100%;
+	position: absolute;
+	left: 171px;
+	overflow: hidden
+}
+
+#mainIframe {
+	width: 100%;
+	height: 100%
+}
+
+.f3-2 {
+	width: 66%;
+	float: left
+}
+
+.my-info .info-item {
+	height: 20px;
+	line-height: 20px;
+	width: 100%
+	margin: 5px;
+}
+
+.my-info .info-item span {
+	color: #555
+}
+
+.frame-basicinfo {
+	width: 100%;
+	height: 110px;
+	position: relative
+}
+
+.frame-basicinfo .part4 {
+	height: 100%
+}
+
+.frame-basicinfo .part4 .context {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 75px
+}
+
+.frame-basicinfo .my-level {
+	width: 31%
+}
+
+.frame-basicinfo .my-level .level {
+	height: 66%;
+	line-height: 25px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	right: 5px;
+	left: 5px
+}
+
+.frame-records {
+	width: 100%;
+	position: relative
+}
+
+.frame-records .records-new {
+	width: 98%;
+	margin-top: -1px
+}
+
+.frame-records .records-new .context {
+	padding: 5px !important
+}
+
+.sky-test {
+	width: 100%
+}
+
+.sky-test .btn {
+	font-size: 14px !important
+}
+
+body,html {
+	margin: 0;
+	padding: 0;
+	/*height: 100%*/
+}
+
+body {
+	background-color: #f5f5f5
+}
+
+a,div,p {
+	text-shadow: none;
+	text-decoration: none
+}
+
+.shadow {
+	box-shadow: 0 1px 2px #e6e6e6
+}
+
+.shadow-top {
+	box-shadow: 1px 0 2px #e6e6e6
+}
+
+.content {
+	width: 100%
+}
+
+.hidden {
+	display: none
+}
+
+.split-top {
+	border-top: 1px solid #e6e6e6
+}
+
+.split-bottom {
+	border-bottom: 1px solid #e6e6e6
+}
+
+.split-left {
+	border-left: 1px solid #e6e6e6
+}
+
+.end {
+	width: 100%;
+	height: 5px;
+	background-color: #f5f5f5;
+	margin-top: 5px
+}
+
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99
+}
+
+.header-fix {
+	margin-top: 32px
+}
+
+.sky-title {
+	height: 32px;
+	line-height: 32px;
+	/*background-color: #acd6ff;*/
+	background-color: #0072C6;
+	font-family:  Microsoft Yahei;
+	color: #F9F7F7;
+	font-size: 14px
+}
+
+.sky-title .header-item {
+	width: 75px;
+	height: 22px;
+	line-height: 22px;
+	margin-top: 5px;
+	text-align: center;
+	display: inline-block;
+	float: right;
+	overflow: hidden
+}
+
+.index-top,.index-top .bg-img {
+	width: 100%
+}
+
+.index-top .bg-img img {
+	width: 100%;
+	display: block
+}
+
+.index-top .top-menu {
+	width: 100%;
+	height: 40px;
+	background-color: #acd6ff;
+	color: #fff;
+	font-size: 15px
+}
+
+.index-top .top-menu .menu-item {
+	height: 30px;
+	margin-top: 5px;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	float: left
+}
+
+.f5 {
+	width: 20%
+}
+
+.sky-content .text-center {
+	text-align: center;
+	padding-left: 0 !important
+}
+
+.block-center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto
+}
+
+.vertical-center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto
+}
+
+.sky-content {
+	height: 400px;
+	margin-top: 5px
+}
+
+.sky-content .part4 {
+	float: left;
+	border: 1px solid #eaeaea;
+	margin-left: 1%
+}
+
+.sky-content .part4 .title {
+	height: 35px;
+	line-height: 35px;
+	background-color: #60BBFF;
+	font-size: 16px;
+	font-family:  Microsoft Yahei;
+	color: #fff;
+	padding-left: 15px;
+	position:relative;
+}
+
+.sky-content .part4 .context {
+	font-size: 15px;
+	font-family:  Microsoft Yahei;
+	color: #222;
+	padding-left: 10px;
+	padding-right: 5px;
+	position: relative
+}
+
+.sky-content .part4 .context .ctx-item {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 8px
+}
+
+.sky-content .part4 .context .basic-info {
+	margin-top: 5px;
+	height: 70px;
+	padding-left: 5px;
+	position: relative
+}
+
+.sky-content .part4 .context .btns {
+	padding-top: 12px;
+	position: relative
+}
+
+.sky-content .part4 .context .btns .btn-txt {
+	color: #fff;
+	text-align: center;
+	padding-left: 0 !important;
+	width: 100%;
+	height: 18px;
+	line-height: 18px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto
+}
+
+.sky-content .part4 .context .btns .btns-left {
+	width: 72%;
+	height: 100px;
+	display: inline-block;
+	position: absolute;
+	left: 2%
+}
+
+.sky-content .part4 .context .btns .btns-left .row {
+	height: 47px;
+	width: 100%;
+	padding-left: 5%;
+	margin: 0 0 6px
+}
+
+.sky-content .part4 .context .btns .btns-left .row .btn-l {
+	width: 46%;
+	float: left;
+	height: 100%;
+	background-color: #b9b9ff;
+	position: relative
+}
+
+.sky-content .part4 .context .btns .btns-left .row .btn-m {
+	width: 50%;
+	float: left;
+	height: 100%;
+	margin-left: 6px;
+	background-color: #b9b9ff;
+	position: relative
+}
+
+.sky-content .part4 .context .btns .btns-right {
+	width: 22%;
+	height: 100px;
+	background-color: #b9b9ff;
+	display: inline-block;
+	position: absolute;
+	right: 4%
+}
+
+.sky-content .part4 .context .row {
+	position: relative;
+	height: 47px;
+	width: 100%;
+	padding-left: 5%;
+	margin: 0 0 6px
+}
+
+.sky-content .part4 .context .row .btn-l {
+	width: 46%;
+	float: left;
+	height: 100%;
+	background-color: #b9b9ff;
+	position: relative
+}
+
+.sky-content .part4 .context .row .btn-m {
+	width: 50%;
+	float: left;
+	height: 100%;
+	margin-left: 6px;
+	background-color: #b9b9ff;
+	position: relative
+}
+
+.f3 {
+	width: 33%;
+	float: left
+}
+
+.f2 {
+	width: 50%;
+	float: left
+}
+
+.ctx-1 {
+	width: 32%;
+	height: 58%
+}
+
+.ctx-2 {
+	width: 65%;
+	height: 58%
+}
+
+.ctx-2 .photo {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto auto auto 15px;
+	height: 50px;
+	width: 50px;
+	z-index: 2;
+	border: 1px solid #eaeaea
+}
+
+.ctx-2 .photo img {
+	display: block;
+	width: 100%
+}
+
+.ctx-2 .basic-info .detail {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	padding-left: 80px;
+	padding-top: 5px;
+	padding-bottom: 5px
+}
+
+.ctx-2 .basic-info .detail .info-item {
+	height: 20px;
+	line-height: 20px;
+	width: 100%
+}
+
+.ctx-2 .basic-info .detail .info-item span {
+	color: #555
+}
+
+.ctx-3 {
+	width: 32%;
+	height: 42%;
+	margin-top: 1%
+}
+
+.ctx-4 {
+	width: 65%;
+	height: 42%;
+	margin-top: 1%
+}
+
+.ctx-4 .context {
+	padding-top: 5px
+}
+
+td, th {
+	vertical-align:middle !important;
+}
+
+.big-data td {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+
+.title-search-input {
+	position: absolute;
+	right: 60px;
+	height: 30px;
+	top: 2px;
+	font-size: 15px;
+	line-height: 30px;
+}
+
+.title-search-btn {
+	position:absolute;
+	right:10px;
+	top:2px;
+}
+
+

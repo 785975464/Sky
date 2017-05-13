@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!-- 解决乱码 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>   org.springframework.web.filter.CharacterEncodingFilter  </filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<welcome-file-list>
+		<!-- <welcome-file>index.jsp</welcome-file> -->
+		<welcome-file>findIndexNews.action</welcome-file>
+	</welcome-file-list>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+ 	</context-param>
+  	<listener>
+	<!--  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+		<listener-class>com.njust.servlet.SpringLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+       <description>create  easytj component</description>
+       <display-name>create  easytj</display-name>
+       <servlet-name>Createasytj</servlet-name>
+        <servlet-class>com.njust.servlet.Createasytj</servlet-class>
+     </servlet>
+     <servlet-mapping>
+       <servlet-name>Createasytj</servlet-name>
+       <url-pattern>/Createasytj</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+       <servlet-name>AddRecord</servlet-name>
+        <servlet-class>com.njust.servlet.AddRecord</servlet-class>
+     </servlet>
+     <servlet-mapping>
+       <servlet-name>AddRecord</servlet-name>
+       <url-pattern>/AddRecord</url-pattern>
+     </servlet-mapping>
+	
+	 <servlet>
+    <servlet-name>EyesightServlet</servlet-name>
+    <servlet-class>com.njust.servlet.EyesightServlet</servlet-class>
+  </servlet>
+      <servlet-mapping>
+    <servlet-name>EyesightServlet</servlet-name>
+    <url-pattern>/EyesightServlet.servlet</url-pattern>
+  </servlet-mapping> 
+	
+  <servlet>
+    <servlet-name>CommunityEyesightServlet</servlet-name>
+    <servlet-class>com.njust.servlet.CommunityEyesightServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommunityEyesightServlet</servlet-name>
+    <url-pattern>/CommunityEyesightServlet.servlet</url-pattern>
+  </servlet-mapping> 
+	
+	<!-- 文件下载 2016-05-17 -->
+  <servlet>
+    <servlet-name>ExcelServlet</servlet-name>
+    <servlet-class>com.njust.servlet.ExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelServlet</servlet-name>
+    <url-pattern>/ExcelServlet.servlet</url-pattern>
+  </servlet-mapping>
+	<!-- 
+	 <servlet>  
+      <servlet-name>DisplayChart</servlet-name>  
+        <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>  
+    </servlet>  
+	<servlet-mapping>  
+        <servlet-name>DisplayChart</servlet-name>  
+       <url-pattern>/DisplayChart</url-pattern>  
+    </servlet-mapping>  
+ 	-->
+
+	<filter>
+        <filter-name>Struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+	<filter-mapping>
+		<filter-name>Struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<error-page>
+    <error-code>404</error-code>
+    	<location>/404.jsp</location>
+	</error-page>
+	
+
+    
+
+
+
+</web-app>

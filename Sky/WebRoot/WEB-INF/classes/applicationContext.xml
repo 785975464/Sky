@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!--配置数据源属性文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:mysql.properties" />
+	</bean>
+
+	<!--配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${drivername}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="testConnectionOnCheckin" value="${testConnectionOnCheckin}"/>   
+  		<property name="automaticTestTable" value="${automaticTestTable}"></property>
+        <property name="idleConnectionTestPeriod" value="${idleConnectionTestPeriod}"></property>
+        <property name="maxIdleTime" value="${maxIdleTime}"></property>
+        <property name="testConnectionOnCheckout" value="${testConnectionOnCheckout}"></property>
+	</bean>
+
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/njust/domain/Userinfo.hbm.xml</value>
+				<value>com/njust/domain/Visioncheck.hbm.xml</value>
+				<value>com/njust/domain/Authorizerelation.hbm.xml</value>
+				<value>com/njust/domain/Assessments.hbm.xml</value>
+				<value>com/njust/domain/Permission.hbm.xml</value>
+				<value>com/njust/domain/Userrole.hbm.xml</value>
+				<value>com/njust/domain/Role.hbm.xml</value>
+				<value>com/njust/domain/News.hbm.xml</value>
+				<value>com/njust/domain/Rolepermission.hbm.xml</value>
+				<value>com/njust/domain/TjSheet.hbm.xml</value>
+				<value>com/njust/domain/TjKey.hbm.xml</value>
+				<value>com/njust/domain/TjValue.hbm.xml</value>
+				<value>com/njust/domain/Message.hbm.xml</value>
+				<value>com/njust/domain/Messagetext.hbm.xml</value>
+				<value>com/njust/domain/Schoolinfo.hbm.xml</value>		<!-- 创建学校表 2016-1-8 -->
+				<value>com/njust/domain/Addressinfo.hbm.xml</value>		<!-- 创建地址表 2016-1-11 -->
+			</list>
+		</property>
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="allowCreate">
+			<value>true</value>
+		</property>
+	</bean>
+	
+
+	<bean id="userinfoDao" class="com.njust.dao.UserinfoDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="userinfoService" class="com.njust.service.UserinfoService">
+		<property name="userinfoDao">
+			<ref bean="userinfoDao" />
+		</property>
+	</bean>  
+
+	<bean id="permissionDao" class="com.njust.dao.PermissionDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="permissionService" class="com.njust.service.PermissionService">
+		<property name="permissionDao">
+			<ref bean="permissionDao" />
+		</property>
+	</bean>  
+	
+	<bean id="userroleDao" class="com.njust.dao.UserroleDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="userroleService" class="com.njust.service.UserroleService">
+		<property name="userroleDao">
+			<ref bean="userroleDao" />
+		</property>
+	</bean> 
+	<bean id="messageDao" class="com.njust.dao.MessageDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="messageService" class="com.njust.service.MessageService">
+		<property name="messageDao">
+			<ref bean="messageDao" />
+		</property>
+	</bean>
+	
+	<bean id="messagetextDao" class="com.njust.dao.MessagetextDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="messagetextService" class="com.njust.service.MessagetextService">
+		<property name="messagetextDao">
+			<ref bean="messagetextDao" />
+		</property>
+	</bean>
+	
+
+
+	<bean id="schoolDocAction" class="com.njust.action.SchoolDocAction">
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>
+		<property name="addressinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="addressinfoService" />
+		</property>
+		<!--  -->
+		<property name="schoolinfoService">
+			<ref bean="schoolinfoService" />
+		</property>
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	<!-- ///////////////////////新增一个action -->
+	<bean id="socialWorkAction" class="com.njust.action.SocialWorkAction">
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>	
+		<property name="schoolinfoService">
+			<ref bean="schoolinfoService" />
+		</property>
+		<property name="visioncheckService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	<!-- ///////////////////////新增一个action 2016-1-5 -->
+	<bean id="messageAction" class="com.njust.action.MessageAction">
+		<property name="messagetextService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="messagetextService" />
+		</property>
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+	</bean>
+	<!-- ///////////////////////新增一个action2015-12-14 -->
+	<bean id="adminAction" class="com.njust.action.AdminAction">
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>	
+	</bean>
+	
+	<!-- yc add 2015-1-5 -->
+		<bean id="visioncheckDao" class="com.njust.dao.VisioncheckDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	
+	
+	<bean id="visioncheckService" class="com.njust.service.VisioncheckService">
+		<property name="visioncheckDao">
+			<ref bean="visioncheckDao" />
+		</property>
+	</bean>
+	
+	<bean id="stuVisionInfoAction" class="com.njust.action.StuVisionInfoAction">
+		<property name="visioncheckService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="visioncheckService" />
+		</property>
+		
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="assessmentsService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="assessmentsService" />
+		</property>
+		<property name="authorizerelationService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="authorizerelationService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>
+		
+	</bean>
+	
+ 
+		<!-- ///////////////////////新增一个action 2015.12.9-->
+	<bean id="communityVisionInfoAction" class="com.njust.action.CommunityVisionInfoAction">
+		<property name="visioncheckService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="visioncheckService" />
+		</property>
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="assessmentsService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="assessmentsService" />
+		</property>
+		<property name="authorizerelationService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="authorizerelationService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>
+		<property name="schoolinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="schoolinfoService" />
+		</property>
+	</bean>
+
+	
+	<bean id="assessmentsDao" class="com.njust.dao.AssessmentsDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="assessmentsService" class="com.njust.service.AssessmentsService">
+		<property name="assessmentsDao">
+			<ref bean="assessmentsDao" />
+		</property>
+	</bean>
+	<bean id="assessmentAction" class="com.njust.action.AssessmentAction">
+		<property name="assessmentsService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="assessmentsService" />
+		</property>
+	</bean>
+
+	<bean id="authorizerelationDao" class="com.njust.dao.AuthorizerelationDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="authorizerelationService" class="com.njust.service.AuthorizerelationService">
+		<property name="authorizerelationDao">
+			<ref bean="authorizerelationDao" />
+		</property>
+	</bean>
+
+
+
+	<bean id="studentAction" class="com.njust.action.StudentAction">
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+		<property name="authorizerelationService">
+			<ref bean="authorizerelationService" />
+		</property>
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	
+	
+	<bean id="authorizerelationAction" class="com.njust.action.AuthorizerelationAction">
+		<property name="authorizerelationService">
+			<ref bean="authorizerelationService" />
+		</property>
+		<property name="userinfoService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+	
+	
+	<bean id="newsDao" class="com.njust.dao.NewsDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="newsService" class="com.njust.service.NewsService">
+		<property name="newsDao">
+			<ref bean="newsDao" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="administratorAction" class="com.njust.action.AdministratorAction">
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+		<property name="userroleService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="userroleService" />
+		</property>
+		<property name="newsService">
+			<ref bean="newsService" />
+		</property>
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+		<property name="messagetextService">
+			<ref bean="messagetextService" />
+		</property>
+		<property name="addressinfoService">
+			<ref bean="addressinfoService" />
+		</property>
+		<property name="schoolinfoService">
+			<ref bean="schoolinfoService" />
+		</property>
+	</bean>
+	
+	<bean id="visualjchartAction" class="com.njust.action.VisualJChartAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	
+	<!-- 测试左右眼分别生成折线图 2016。5.10 -->
+	<bean id="visualleftAction" class="com.njust.visual.VisualLeftFunctionAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	<bean id="visualrightAction" class="com.njust.visual.VisualRightFunctionAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	
+	<bean id="visualleftrefractionAction" class="com.njust.visual.VisualLeftRefractionAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	<bean id="visualrightrefractionAction" class="com.njust.visual.VisualRightRefractionAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	
+	<bean id="visualleftaxiallengthAction" class="com.njust.visual.VisualLeftAxialLengthAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	<bean id="visualrightaxiallengthAction" class="com.njust.visual.VisualRightAxialLengthAction">
+		<property name="visioncheckService">
+			<ref bean="visioncheckService" />
+		</property>
+	</bean>
+	
+	
+	<!-- //////////////////////////////////////// -->
+	
+	<!-- easytj -->
+	<bean id="tjSheetDao" class="com.njust.dao.TjSheetDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="tjSheetService" class="com.njust.service.TjSheetService">
+		<property name="tjSheetDao">
+			<ref bean="tjSheetDao" />
+		</property>
+	</bean>
+	<bean id="tjKeyDao" class="com.njust.dao.TjKeyDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="tjKeyService" class="com.njust.service.TjKeyService">
+		<property name="tjKeyDao">
+			<ref bean="tjKeyDao" />
+		</property>
+	</bean>
+	<bean id="tjValueDao" class="com.njust.dao.TjValueDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="tjValueService" class="com.njust.service.TjValueService">
+		<property name="tjValueDao">
+			<ref bean="tjValueDao" />
+		</property>
+	</bean>
+	<bean id="easytjAction" class="com.njust.action.EasyTjAction">
+		<property name="tjSheetService">
+			<ref bean="tjSheetService" />
+		</property>
+		<property name="tjKeyService">
+			<!-- property-name一定要与action类中的对象名一致。 -->
+			<ref bean="tjKeyService" />
+		</property>
+		<property name="tjValueService">
+			<ref bean="tjValueService" />
+		</property>
+	</bean>
+	
+	<!-- schoolinfo 2016-1-8 -->
+	<bean id="schoolinfoDao" class="com.njust.dao.SchoolinfoDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="schoolinfoService" class="com.njust.service.SchoolinfoService">
+		<property name="schoolinfoDao">
+			<ref bean="schoolinfoDao" />
+		</property>
+	</bean>
+	<bean id="schoolAction" class="com.njust.action.SchoolAction">
+		<property name="schoolinfoService">
+			<ref bean="schoolinfoService" />
+		</property>
+		<property name="addressinfoService">
+			<ref bean="addressinfoService" />
+		</property>
+	</bean>
+	<!-- addressinfo 2016-1-11 -->
+	<bean id="addressinfoDao" class="com.njust.dao.AddressinfoDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>  
+	<bean id="addressinfoService" class="com.njust.service.AddressinfoService">
+		<property name="addressinfoDao">
+			<ref bean="addressinfoDao" />
+		</property>
+	</bean>
+	<bean id="addressAction" class="com.njust.action.AddressAction">
+		<property name="addressinfoService">
+			<ref bean="addressinfoService" />
+		</property>
+	</bean>
+	
+	<!-- 2017.4.24重构，添加用户信息类，集中处理增删改 -->
+	<bean id="personinfoAction" class="com.njust.action.PersonInfoAction">
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+</beans>

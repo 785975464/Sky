@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.action.excludePattern" value="/Createasytj,/AddRecord"></constant>
+
+
+<package name="SocialWorkAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="communityInfo" class="socialWorkAction" method="communityInfo">			
+			<!-- <result name="success">socialcommunityInfo.jsp</result> -->
+		</action>
+		<action name="createCommunityInfo" class="socialWorkAction" method="createCommunityInfo">			
+			<result name="success">create_community_info.jsp</result>
+		</action>
+		<action name="addCommunityInfo" class="socialWorkAction" method="addCommunityInfo">
+			<result name="success" type="chain">createVisionArchive_msg</result>	
+		</action>
+		<action name="checkCommunityInfo" class="socialWorkAction" method="checkCommunityInfo">
+			<result type="json" />
+		</action>
+		<action name="searchCommunityInfo" class="socialWorkAction" method="searchCommunityInfo">
+			<!-- <result name="success">socialcommunityInfo.jsp</result> -->
+			<!--  -->
+			<result name="success">searchCommunityStuInfo.jsp</result>
+			<!-- <result type="json" /> -->
+		</action>
+		<action name="delCommunityInfo" class="socialWorkAction" method="delCommunityInfo">
+			<result type="json" />
+		</action>
+		<action name="modifyCommunityInfo" class="socialWorkAction" method="modifyCommunityInfo">
+			<result name="success">modify_community_info.jsp</result>
+		</action>
+		<action name="updateCommunityInfo" class="socialWorkAction" method="updateCommunityInfo">
+<!-- 			<result name="success">socialcommunityInfo.jsp</result> -->
+		</action>
+		<action name="parentCommunityInfo" class="socialWorkAction" method="parentCommunityInfo">
+			<result name="success">parent_stu_info.jsp</result>
+		</action>
+		<action name="phonelogin" class="socialWorkAction" method="phonelogin">
+			<result name="success">clientInfo.jsp</result>
+			<result name="error">phoneloginerror.jsp</result>
+		</action>
+		<action name="phonefirstlogin" class="socialWorkAction" method="phonefirstlogin">
+			<result name="success">setphoneInfo.jsp</result>
+			<result name="error">phonefirstloginerror.jsp</result>
+		</action>
+		<action name="updatePhoneLoginInfo" class="socialWorkAction" method="updatePhoneLoginInfo">
+			<result name="success">clientInfo.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+</package>
+
+<package name="MessageAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="publishCommunityMessage" class="messageAction" method="publishCommunityMessage">
+			<result name="success">publishCommunitymessagesucc.jsp</result>
+		</action>
+		<action name="publishCommunityAdvancedMessage" class="messageAction" method="publishCommunityAdvancedMessage">
+			<result name="success">publishCommunitymessagesucc.jsp</result>
+		</action>
+		<!-- 
+		<action name="publishCommunityParentsMessage" class="messageAction" method="publishCommunityParentsMessage">
+			<result name="success">success.jsp</result>
+		</action>
+		 -->
+		<action name="listCommunityMessage" class="messageAction" method="listCommunityMessage">
+			<result name="success">listCommunityMessage.jsp</result>
+		</action>
+		<action name="listStudentsMessage" class="messageAction" method="listStudentsMessage">
+			<result name="success">listStudentsMessage.jsp</result>
+		</action>
+		<action name="listParentsMessage" class="messageAction" method="listParentsMessage">
+			<result name="success">listParentsMessage.jsp</result>
+		</action>
+</package>
+
+<package name="CommunityVisionInfoAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="importCommunityExcelFile" class="communityVisionInfoAction" method="importCommunityExcelFile">
+			<!-- <result name="success">socialcommunityInfo.jsp</result> -->
+			<!-- <result name="success">importCommunityExcelSuccess.jsp</result> -->
+			<result name="success">importCommunityResultInfo.jsp</result>
+			<result name="error">excelfileerror.jsp</result>
+		</action>
+		<action name="stopImport" class="communityVisionInfoAction" method="stopImport">
+			<!-- <result name="success">socialcommunityInfo.jsp</result> -->
+			<result name="success">importCommunityExcelSuccess.jsp</result>
+			<result name="error">excelfileerror.jsp</result>
+		</action>
+		<action name="importAdminExcelFile" class="communityVisionInfoAction" method="importAdminExcelFile">
+			<result name="success">importAdminExcelSuccess.jsp</result>
+			<result name="error">excelfileerror.jsp</result>
+		</action>
+		<action name="checkProcess" class="communityVisionInfoAction" method="checkProcess">
+			<result type="json" />
+		</action>
+		<action name="stopImport" class="communityVisionInfoAction" method="stopImport">
+			<result name="success">importCommunityResultInfo.jsp</result>
+		</action>
+		<action name="communityVisionInfo" class="communityVisionInfoAction" method="communityVisionInfo">
+<!-- 			<result name="success">communityVision.jsp</result> -->
+		</action>
+		<action name="visionAlertInfo" class="communityVisionInfoAction" method="visionAlertInfo">
+			<result name="success">visionAlertInfo.jsp</result>
+		</action>
+		<action name="theVisionAlertPeople" class="communityVisionInfoAction" method="theVisionAlertPeople">
+			<result name="success">visionAlertInfo.jsp</result>
+		</action>
+		<action name="personalVisionInfo" class="communityVisionInfoAction" method="personalVisionInfo">
+			<result name="success">personalVisionInfo.jsp</result>
+		</action>
+		<!-- 
+		<action name="searchCommunityVisionInfo" class="communityVisionInfoAction" method="searchCommunityVisionInfo">
+			<result type="json" />
+			<result name="success">communityVision.jsp</result>
+		</action>
+		 -->
+</package>
+
+	<package name="SchoolDocAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="login" class="schoolDocAction" method="login">
+			<result name="error">loginerror.jsp</result>
+			<result name="success">school_doctor_home.jsp</result>
+		</action>
+		<action name="allStuInfo" class="schoolDocAction" method="allStuInfo">			
+			<result name="success">all_stu_info.jsp</result>
+		</action>
+		<action name="addStuInfo" class="schoolDocAction" method="addStuInfo">
+			<!--  <result name="success">create_stu_info.jsp</result> -->
+			<result name="success" type="chain">createVisionArchive_msg</result>	
+		</action>
+		<action name="checkStuInfo" class="schoolDocAction" method="checkStuInfo">
+			<result type="json" />
+		</action>
+		<action name="searchStuInfo" class="schoolDocAction" method="searchStuInfo">
+			<!-- <result type="json" /> -->
+			<!-- <result name="success">all_stu_info.jsp</result> -->
+			<result name="success">searchSchoolStuInfo.jsp</result>
+		</action>
+		<action name="delStuInfo" class="schoolDocAction" method="delStuInfo">
+			<result type="json" />
+		</action>
+		<action name="modifyStuInfo" class="schoolDocAction" method="modifyStuInfo">
+			<result name="success">modify_stu_info.jsp</result>
+		</action>
+		<action name="updateStuInfo" class="schoolDocAction" method="updateStuInfo">
+			<result name="success">all_stu_info.jsp</result>
+		</action>
+		<action name="parentStuInfo" class="schoolDocAction" method="parentStuInfo">
+			<result name="success">parent_stu_info.jsp</result>
+		</action>
+		<action name="loginOut" class="schoolDocAction" method="loginOut">
+			<result name="success">index.jsp</result>
+			<!-- <result name="success" type="chain">findIndexNews</result> -->	
+			<result name="phoneout">phonelogin.jsp</result>	<!-- 处理手机登出的情况，2016-8-25 -->
+		</action>
+		<action name="addParentInfo" class="schoolDocAction" method="addParentInfo">
+			<result name="success" type="chain">allParent</result>	
+		</action>
+		<action name="downloadFile" class="schoolDocAction" method="downloadFile">
+			<result name="success">success.jsp</result>
+		</action>
+		<action name="downloadSingleCommunityInfo" class="schoolDocAction" method="downloadSingleCommunityInfo">			
+			<!-- <result name="success">success.jsp</result> -->
+			<result name="error">downloadError.jsp</result>
+		</action>
+		<action name="downloadCommunityInfo" class="schoolDocAction" method="downloadCommunityInfo">			
+			<!-- <result name="success">success.jsp</result> -->
+			<result name="error">downloadError.jsp</result>
+		</action>
+		<!-- 学校数据下载功能 2017-07-27 -->
+		<action name="downloadSingleSchoolInfo" class="schoolDocAction" method="downloadSingleSchoolInfo">			
+			<result name="error">downloadSchoolError.jsp</result>
+		</action>
+		<action name="downloadSchoolInfo" class="schoolDocAction" method="downloadSchoolInfo">			
+			<result name="error">downloadSchoolError.jsp</result>
+		</action>
+	</package>
+	
+	<package name="VisionInfoAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="stuVisionInfo" class="stuVisionInfoAction" method="stuVisionInfo">
+			<result name="success">stu_vision_archives.jsp</result>
+		</action>
+		<action name="createVisionArchive" class="stuVisionInfoAction" method="createVisionArchive">
+			<result name="success">create_vision_archive.jsp</result>
+		</action>
+		<action name="createVisionArchive_msg" class="stuVisionInfoAction" method="createVisionArchive_msg">
+			<result name="success">create_vision_archive.jsp</result>
+		</action>
+		<action name="delStuVision" class="stuVisionInfoAction" method="delStuVision">
+			<result name="success">updateDeleteStuVisionSuccess.jsp</result>
+		</action>
+		<action name="expertDiagnose" class="stuVisionInfoAction" method="expertDiagnose">
+			<result name="success">expert.jsp</result>
+		</action>
+		<action name="expertDiagnoseOneStu" class="stuVisionInfoAction" method="expertDiagnoseOneStu">
+			<result name="success">expertOneStu.jsp</result>
+		</action>
+		<action name="expertDetailVisionInfo" class="stuVisionInfoAction" method="expertDetailVisionInfo">
+			<result name="success">expertAssessment.jsp</result>
+		</action>
+		<action name="detailVisionInfo" class="stuVisionInfoAction" method="detailVisionInfo">
+			<result name="success">detail_vision_info.jsp</result>
+		</action>
+		<action name="modifydetailVisionInfo" class="stuVisionInfoAction" method="modifydetailVisionInfo">
+			<result name="success">modifyEyeVision.jsp</result>
+		</action>
+		<action name="updatedetailVisionInfo" class="stuVisionInfoAction" method="updatedetailVisionInfo">
+			<result name="success">updatedetailVisionInfoSuccess.jsp</result>
+		</action>
+		
+		<action name="addVisionInfo" class="stuVisionInfoAction" method="addVisionInfo">
+			<result name="success">create_vision_archive.jsp</result>
+		</action>
+		<action name="parentStuVisionInfo" class="stuVisionInfoAction" method="parentStuVisionInfo">
+			<result name="success">parent_stu_vision_info.jsp</result>
+		</action>
+		
+		<action name="importExcelFile" class="stuVisionInfoAction" method="importExcelFile">
+			<result name="success">importSchoolResultInfo.jsp</result>
+			<!-- <result name="success">importExcelSuccess.jsp</result> -->
+			<result name="error">excelfileerror.jsp</result>
+		</action>
+		<!-- 新增视觉合并功能 2015-12-26 -->
+		<action name="mergeVision" class="stuVisionInfoAction" method="mergeVision">
+			<result type="json" />
+		</action>
+		<action name="stuVisionLevel" class="stuVisionInfoAction" method="stuVisionLevel">
+			<result name="success">studentVisionLevel.jsp</result>
+		</action>
+		<action name="checkSchoolProcess" class="stuVisionInfoAction" method="checkSchoolProcess">
+			<result type="json" />
+		</action>
+		<action name="stopSchoolImport" class="stuVisionInfoAction" method="stopSchoolImport">
+			<result name="success">importSchoolResultInfo.jsp</result>
+		</action>
+	</package>
+
+	<package name="AssessmentAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="expertInsertAssessment" class="assessmentAction" method="expertInsertAssessment">
+			<result type="json" />
+		</action>
+		<action name="expertUpdateAssessment" class="assessmentAction" method="expertUpdateAssessment">
+			<result type="json" />
+		</action>
+		<action name="stuCheckAssessmentFromId" class="assessmentAction" method="stuCheckAssessmentFromId">
+			<result name="success">stu_checkAssessment.jsp</result>
+		</action>
+	</package>
+	
+	
+	
+	
+	<package name="StudentAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="stuPersonalVisionInfo" class="studentAction" method="stuPersonalVisionInfo">
+			<result name="success">stu_personal_vision_info.jsp</result>
+		</action>
+		<action name="stuPersonalVisionInfoNewest" class="studentAction" method="stuPersonalVisionInfoNewest">
+			<result name="success">stu_personal_vision_info_newest.jsp</result>
+		</action>
+		<action name="stuAuthorizedSpecialist" class="studentAction" method="stuAuthorizedSpecialist">
+			<result name="success">stu_authorized_specialist.jsp</result>
+		</action>
+		<action name="delAuthorizerelation" class="studentAction" method="delAuthorizerelation">
+			<result type="json" />
+		</action>
+		<action name="studentApplyExpert" class="studentAction" method="studentApplyExpert">
+			<result name="success">addAuthorizerelation.jsp</result>
+		</action>
+		<action name="studentInsertAuthorizerelation" class="studentAction" method="studentInsertAuthorizerelation">
+			<result type="json" />
+		</action>
+		<action name="modifyStuselfInfo" class="studentAction" method="modifyStuselfInfo">
+			<result name="success">StumodifyselfInfo.jsp</result>
+		</action>
+		
+		<action name="updateStuselfInfo" class="studentAction" method="updateStuselfInfo">
+			<result name="success">stu_personal_info.jsp</result>
+		</action>
+		<action name="updateStuKey" class="studentAction" method="updateStuKey">
+			<result name="success">stu_personal_info.jsp</result>
+		</action>
+		<action name="allParent" class="studentAction" method="allParent">
+			<result name="success">all_parent_info.jsp</result>
+		</action>
+		
+		
+		<!-- 修改、删除监护人信息 2016.5.12 -->
+		<!-- 
+		<action name="modifyParentInfo" class="studentAction" method="modifyParentInfo">
+			<result name="success">success.jsp</result>
+		</action>
+		 -->
+		<action name="delParentInfo" class="studentAction" method="delParentInfo">
+			<result type="json" />
+		</action>
+		
+		<action name="updateParent" class="studentAction" method="updateParent">
+			<result type="json" />
+		</action>
+		<action name="stuPersInfo" class="studentAction" method="stuPersInfo">
+			<result name="success">stu_personal_info.jsp</result>
+		</action>
+		<action name="searchParentInfo" class="studentAction" method="searchParentInfo">
+			<result type="json" />
+		</action>
+		<!-- 监护人信息管理 2016.4.18
+		<action name="myParentsInfo" class="studentAction" method="myParentsInfo">
+			<result name="success">success.jsp</result>
+		</action>
+		 -->
+	</package>
+
+
+
+	<package name="AuthorizerelationAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="noAuthorizedInfo" class="authorizerelationAction" method="noAuthorizedInfo">
+			<result name="success">authorizerelation.jsp</result>
+		</action>
+		<action name="updateAuthorizedInfo" class="authorizerelationAction" method="updateAuthorizedInfo">
+			<result type="json" />
+		</action>
+		<action name="delAuthorizedInfo" class="authorizerelationAction" method="delAuthorizedInfo">
+			<result type="json" />
+		</action>
+	</package>
+	
+	<!-- AdminAction用于处理管理员操作 -->
+	<package name="AdminAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="stuInfo" class="adminAction" method="stuInfo">			
+			<result name="success">admin_stu_info.jsp</result>
+		</action>
+		<action name="socialWorkerInfo" class="adminAction" method="socialWorkerInfo">			
+			<result name="success">admin_socialworker_info.jsp</result>
+		</action>
+		<action name="schoolDocInfo" class="adminAction" method="schoolDocInfo">			
+			<result name="success">admin_schooldoctor_info.jsp</result>
+		</action>
+		<action name="checkStuInfo" class="adminAction" method="checkStuInfo">
+			<result type="json" />
+		</action>
+		<action name="searchAllStuInfo" class="adminAction" method="searchAllStuInfo">
+			<result type="json" />
+		</action>
+		<action name="delAdminStuInfo" class="adminAction" method="delAdminStuInfo">
+			<result type="json" />
+		</action>
+		<action name="delAdminSocialInfo" class="adminAction" method="delAdminSocialInfo">
+			<result type="json" />
+		</action>
+		<action name="delAdminDoctorInfo" class="adminAction" method="delAdminDoctorInfo">
+			<result type="json" />
+		</action>
+		<action name="modifyAdminStuInfo" class="adminAction" method="modifyAdminStuInfo">
+			<result name="success">modify_admin_stu_info.jsp</result>
+			<result name="community">modify_admin_community_info.jsp</result>
+			<result name="doctor">modify_admin_doctor_info.jsp</result>
+		</action>
+		<!-- 
+		<action name="modifyAdminCommunityInfo" class="adminAction" method="modifyAdminCommunityInfo">
+			<result name="success">modify_admin_community_info.jsp</result>
+		</action>
+		 -->
+		<action name="updateAdminStuInfo" class="adminAction" method="updateAdminStuInfo">
+			<result name="success">admin_stu_info.jsp</result>
+		</action>
+		<action name="parentStuInfo" class="adminAction" method="parentStuInfo">
+			<result name="success">parent_stu_info.jsp</result>
+		</action>
+	</package>
+	
+	<package name="AdministratorAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="allInfo" class="administratorAction" method="allInfo">
+			<result name="success">administrator.jsp</result>
+		</action>
+		<action name="checkUser" class="administratorAction" method="checkUser">
+			<result type="json" />
+		</action>
+		<action name="addUser" class="administratorAction" method="addUser">
+			<result name="success">admin_create_info.jsp</result>
+		</action>
+		<!-- 
+		<action name="stuInfo" class="administratorAction" method="stuInfo">			
+			<result name="success">admin_stu_info.jsp</result>
+		</action>
+		 -->																	<!-- 增加管理员查询功能 2015-12-14 -->
+		<action name="addNews" class="administratorAction" method="addNews">
+			<result name="success">add_news.jsp</result>
+		</action>
+		
+		<action name="findIndexNews" class="administratorAction" method="findIndexNews">
+			<!-- <result name="success">index.jsp</result> -->
+		</action>
+		
+		<action name="findNews" class="administratorAction" method="findNews">
+			<result name="success">news_list.jsp</result>
+		</action>
+		
+		<action name="findMoreNews" class="administratorAction" method="findMoreNews">
+			<result name="success">allNewsList.jsp</result>
+		</action>
+		
+		<action name="findNewsByID" class="administratorAction" method="findNewsByID">
+			<result name="success">singleNews.jsp</result>
+		</action>
+		
+		<action name="delNews" class="administratorAction" method="delNews">
+			<result name="success">news_list.jsp</result>
+		</action>
+		<action name="adminInfo" class="administratorAction" method="adminInfo">
+			<result name="success">adminMessage.jsp</result>
+		</action>
+		<action name="delAdminInfo" class="administratorAction" method="delAdminInfo">
+			<result type="json" />
+		</action>
+		<action name="register" class="administratorAction" method="register">
+			<result name="success">registerSuccess.jsp</result>
+		</action>
+		<action name="modifyManager" class="administratorAction" method="modifyManager">
+			<result name="success">modifyManager.jsp</result>
+		</action>
+		<action name="updateManager" class="administratorAction" method="updateManager">
+			<result type="json" />
+		</action>
+		<action name="publishMessage" class="administratorAction" method="publishMessage">
+			<result name="success">publishmessagesucc.jsp</result>
+		</action>
+		<action name="listMessage" class="administratorAction" method="listMessage">
+			<result name="success">listMessage.jsp</result>
+		</action>
+		<action name="clickmessage" class="administratorAction" method="clickmessage">
+			<result name="success">singlemessage.jsp</result>
+		</action>
+		
+	</package>
+	
+	
+	<package name="FileAction" extends="struts-default,json-default"
+		namespace="/">
+	<!-- 文件下载 -->  
+        <action name="download" class="com.njust.action.FileAction">  
+            <result name="success" type="stream">  
+                <param name="contentType">application/octet-stream;charset=ISO8859-1</param>        
+                <param name="contentDisposition">attachment;filename=${downloadFileName}</param>  
+                <param name="bufferSize">4096</param>  
+                 <param name="inputName">inputStream</param>  
+            </result>  
+        </action> 
+	</package>
+	
+	<package name="VisualJchart" extends="jfreechart-default" > 
+	    <!-- 
+	    <action name="leftVisualFuntion" class="visualjchartAction" method="leftVisualFuntion"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+	    <action name="rightVisualFunction" class="visualjchartAction" method="rightVisualFunction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+	    
+	    <action name="leftRefraction" class="visualjchartAction" method="leftRefraction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+	    <action name="rightRefraction" class="visualjchartAction" method="rightRefraction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action>
+	    
+	     
+	    <action name="leftAxialLength" class="visualjchartAction" method="leftAxialLength"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action>
+	    <action name="rightAxialLength" class="visualjchartAction" method="rightAxialLength"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result>
+	    </action>
+		 -->
+    </package> 
+    
+    <!-- 测试左右眼分别生成折线图 2016。5.10 -->
+    <package name="VisualLeftFunction" extends="jfreechart-default" > 
+	    <action name="leftVisualFunction" class="visualleftAction" method="leftVisualFunction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+    </package>
+    <package name="VisualRightFunction" extends="jfreechart-default" > 
+	    <action name="rightVisualFunction" class="visualrightAction" method="rightVisualFunction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+    </package> 
+    
+    <package name="VisualLeftRefraction" extends="jfreechart-default" > 
+	    <action name="leftRefraction" class="visualleftrefractionAction" method="leftRefraction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action>
+    </package>
+    <package name="VisualRightRefraction" extends="jfreechart-default" > 
+	    <action name="rightRefraction" class="visualrightrefractionAction" method="rightRefraction"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action> 
+    </package>
+    
+    <package name="VisualLeftAxialLength" extends="jfreechart-default" >
+    	<action name="leftAxialLength" class="visualleftaxiallengthAction" method="leftAxialLength"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action>
+	</package>
+	<package name="VisualRightAxialLength" extends="jfreechart-default" >
+	    <action name="rightAxialLength" class="visualrightaxiallengthAction" method="rightAxialLength"> 
+	      <result name="success" type="chart"> 
+	      <param name="width">800 </param> 
+	      <param name="height">600 </param> 
+	      </result> 
+	    </action>
+    </package>
+    
+    <!-- //////////////////////////////////////////////////// -->
+    
+	<package name="EasyTj" extends="struts-default,json-default" namespace="/">
+		<action name="gettjlist" class="easytjAction" method="gettjlist"> 
+	      <result name="success">allTjList.jsp</result>
+	    </action> 
+	    
+	    <action name="startTj" class="easytjAction" method="startTj"> 
+	      <result name="success">startTj.jsp</result>
+	    </action> 
+	    
+	    <action name="findMoreSheets" class="easytjAction" method="findMoreSheets"> 
+	      <result name="success">allSheetList.jsp</result>
+	    </action>
+	    
+	    <!-- 新增问卷功能 2015-12-17 -->
+	    <action name="userSheets" class="easytjAction" method="userSheets"> 
+	      <result name="success">allQuestionnaires.jsp</result>
+	    </action>
+
+	    <action name="findSheetsByID" class="easytjAction" method="findSheetsByID">
+			<result name="success">singleSheets.jsp</result>
+		</action>
+
+		<action name="userSheetsByID" class="easytjAction" method="userSheetsByID">
+			<result name="success">userSheets.jsp</result>
+		</action>
+
+		<action name="exportDcDataToFile" class="easytjAction" method="exportDcDataToFile">	
+				<result name="success">tempfile.jsp</result>
+		</action>
+		<action name="deleteTjByID" class="easytjAction" method="deleteTjByID">	
+				<result type="json" />
+		</action>
+		
+		<action name="sunmitsuccess" class="easytjAction" method="sunmitsuccess">	
+				<result name="success">submitTjSuccess.jsp</result>
+		</action>
+		<action name="usersubmitsuccess" class="easytjAction" method="usersubmitsuccess">	
+				<result name="success">submitUserTjSuccess.jsp</result>
+		</action>
+
+    </package> 
+    <!-- 新增学校管理功能 2016-1-8 -->
+    <!--  -->
+    <package name="Schoolinfo" extends="struts-default,json-default" namespace="/">
+		<action name="allSchoolInfo" class="schoolAction" method="allSchoolInfo"> 
+	      <result name="success">all_school_info.jsp</result>
+	    </action>
+    	<action name="checkSchInfo" class="schoolAction" method="checkSchInfo">
+			<result type="json" />
+		</action>
+    	<action name="createSchoolInfo" class="schoolAction" method="createSchoolInfo">
+			<result name="success">create_school_info.jsp</result>
+		</action>
+    	<action name="addSchoolInfo" class="schoolAction" method="addSchoolInfo">
+			<result name="success" type="chain">allSchoolInfo</result>	
+		</action>
+    	<action name="delSchInfo" class="schoolAction" method="delSchInfo">
+			<!-- <result name="success">deleteSchoolSuccess.jsp</result> -->
+			<result type="json" />
+		</action>
+		<action name="modifySchoolInfo" class="schoolAction" method="modifySchoolInfo">
+			<result name="success">modify_school_info.jsp</result>
+		</action>
+		<action name="searchSchoolInfo" class="schoolAction" method="searchSchoolInfo">
+			<result name="success">searchSchoolInfo.jsp</result>
+		</action>
+		<action name="updateSchoolInfo" class="schoolAction" method="updateSchoolInfo">
+			<result type="chain">allSchoolInfo</result>
+		</action>
+		<action name="downloadSchoolStuInfo" class="schoolAction" method="downloadSchoolStuInfo">	<!--  学校数据下载功能 2016-07-27 -->
+			<result name="success">download_schoolstudents_info.jsp</result>
+		</action>
+		<action name="getAllSchools" class="schoolAction" method="getAllSchools">	<!--  2017-04-25重构 -->
+		</action>
+    </package>
+    
+	<!-- 新增地址管理功能 2016-1-11 -->
+    <!--  -->
+    <package name="Addressinfo" extends="struts-default,json-default" namespace="/">
+		<action name="allAddressInfo" class="addressAction" method="allAddressInfo"> 
+	      <result name="success">all_address_info.jsp</result>
+	    </action>
+	    <action name="getCommNum" class="addressAction" method="getCommNum">
+			<result type="json" />
+		</action>
+		<action name="checkCommInfo" class="addressAction" method="checkCommInfo">
+			<result type="json" />
+		</action>
+	    <action name="addAddressInfo" class="addressAction" method="addAddressInfo">
+			<result name="success" type="chain">allAddressInfo</result>	
+		</action>
+	    <action name="modifyAddressInfo" class="addressAction" method="modifyAddressInfo">
+			<result name="success">modify_address_info.jsp</result>
+		</action>
+	    <action name="updateAddressInfo" class="addressAction" method="updateAddressInfo">
+			<result name="success">all_address_info.jsp</result>
+		</action>
+	    <action name="delAddressInfo" class="addressAction" method="delAddressInfo">
+			<result type="json" />
+		</action>
+		<action name="downloadStuInfo" class="addressAction" method="downloadStuInfo">	<!--  数据下载功能 2016-07-23 -->
+			<result name="success">download_students_info.jsp</result>
+		</action>
+		<action name="getTheCommunity" class="addressAction" method="getTheCommunity">	<!--  2017-04-24重构 -->
+		</action>
+		<action name="getTheStreet" class="addressAction" method="getTheStreet">	<!--  2017-04-24重构 -->
+		</action>
+		<action name="getTheDistrict" class="addressAction" method="getTheDistrict">	<!--  2017-04-25重构 -->
+		</action>
+		<action name="getTheAddressId" class="addressAction" method="getTheAddressId">	<!--  2017-04-25重构 -->
+		</action>
+    </package>
+    
+    <!-- 2017.4.24重构 -->
+    <package name="PersonInfoAction" extends="struts-default,json-default"
+		namespace="/">
+		<action name="delPersonInfo" class="personinfoAction" method="delPersonInfo">	<!--  删除用户 -->
+			<!-- <result name="success">download_students_info.jsp</result> -->
+		</action>
+		<action name="downloadPersonInfo" class="personinfoAction" method="downloadPersonInfo">	<!--  下载用户信息 -->
+		</action>
+	</package>
+</struts>    
